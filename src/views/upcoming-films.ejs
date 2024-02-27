@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Upcoming Films</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .film-card {
+            background: #fff;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .film-card h2 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .film-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .film-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+<%- include('./partials/header') %>
+    <div class="container mt-5">
+        <h1>Upcoming Films</h1>
+        <div class="film-list">
+            <% films.forEach(film => { %>
+                <div class="film-card">
+                    <h2><%= film.title.en %></h2>
+                    <h4><%= film.title.ru %></h4>
+                    <p><%= film.description.en %></p>
+                    <p><%= film.description.ru %></p>
+                    <p>Release Date: <%= new Date(film.releaseDate).toLocaleDateString() %></p>
+                    <% if(film.images && film.images.length > 0) { %>
+                        <div id="carousel<%= film._id %>" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <% film.images.forEach((image, index) => { %>
+                                    <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                                        <img src="<%= image %>" class="d-block w-100" alt="Film Image">
+                                    </div>
+                                <% }) %>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%= film._id %>" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel<%= film._id %>" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

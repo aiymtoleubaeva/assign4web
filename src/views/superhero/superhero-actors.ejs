@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Actors</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/superhero.css">
+</head>
+<body>
+<%- include('../partials/header') %>
+<div class="container mt-5" style="background-color: aliceblue">
+    <h2>Movies</h2>
+    <% if (actors.length === 0) { %>
+        <p>No movie information found for this superhero.</p>
+    <% } else { %>
+        <% actors.forEach(actorDetails => { %>
+            <div class="row my-1">
+                <div class="col-auto">
+                    <img src="<%= actorDetails.poster %>" alt="Superhero Image" style="max-width: 100px;height: auto;">
+                </div>
+                <div class="col">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Movies:</strong> <%= actorDetails.title %> (<%= actorDetails.year %>)
+                            <br>
+                            <strong>Actors:</strong> <%= actorDetails.actors.join(', ') %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
+</body>
+</html>

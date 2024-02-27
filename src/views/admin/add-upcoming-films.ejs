@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add a New Upcoming Film</h1>
+        <form action="/upcoming-films" method="POST">
+            <label for="titleEn">Title (EN):</label>
+            <input type="text" id="titleEn" name="title[en]" required>
+
+            <label for="titleOther">Title (RU):</label>
+            <input type="text" id="titleOther" name="title[ru]" required>
+
+            <label for="descriptionEn">Description (EN):</label>
+            <textarea id="descriptionEn" name="description[en]" required></textarea>
+
+            <label for="descriptionOther">Description (Other Language):</label>
+            <textarea id="descriptionOther" name="description[ru]" required></textarea>
+
+            <label for="releaseDate">Release Date:</label>
+            <input type="date" id="releaseDate" name="releaseDate" required>
+
+            <label for="image1">Image URL 1:</label>
+            <input type="text" id="image1" name="images[]" required>
+
+            <label for="image2">Image URL 2:</label>
+            <input type="text" id="image2" name="images[]" required>
+
+            <label for="image3">Image URL 3:</label>
+            <input type="text" id="image3" name="images[]" required>
+
+            <button type="submit">Add Film</button>
+        </form>
+    </div>
+</body>
+</html>

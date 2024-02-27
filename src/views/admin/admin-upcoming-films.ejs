@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Admin - Manage Upcoming Films</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Upcoming Films</h1>-
+        <a href="/upcoming-films/add" class="btn btn-primary">Add Film</a>
+        <div class="film-list">
+            <% films.forEach(film => { %>
+                <div class="film mb-3">
+                    <h2><%= film.title.en %></h2>
+                    <p><%= film.description.en %></p>
+                    <p>Release Date: <%= film.releaseDate.toDateString() %></p>
+                    <a href="/upcoming-films/<%= film._id %>/edit" class="btn btn-secondary">Edit</a>
+                    <form action="/upcoming-films/<%= film._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>

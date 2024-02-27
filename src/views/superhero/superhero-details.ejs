@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= superhero.name %></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="superhero-card card px-2 py-2">
+                <div class="row g-0">
+                    <div class="col-md-4 mt-2">
+                        <img src="<%= superhero.image.url %>" class="img-fluid rounded-start" alt="<%= superhero.name %>" style="border: 2px solid #ff0000; border-radius: 10px">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h2 class="card-title"><%= superhero.name %></h2>
+                            <p class="card-text"><small class="text-muted">Superhero details</small></p>
+                            <div class="details">
+                                <h4> Appearance:</h4>
+                                <% for (const [key, value] of Object.entries(superhero.appearance)) { %>
+                                    <p><strong><%= key %>:</strong> <%= value %></p>
+                                <% } %>
+                                <h4>Biography:</h4>
+                                <% for (const [key, value] of Object.entries(superhero.biography)) { %>
+                                    <p><strong><%= key %>:</strong> <%= value %></p>
+                                <% } %>
+                                <h4> Powerstats:</h4>
+                                <div class="powerstats">
+                                    <% for (const [key, value] of Object.entries(superhero.powerstats)) { %>
+                                        <div class="mb-1">
+                                            <label><strong><%= key %>:</strong></label>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: <%= value %>%" aria-valuenow="<%= value %>" aria-valuemin="0" aria-valuemax="100"><%= value %></div>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <button class="btn btn-info mt-3" onclick="location.href='/superhero/<%= superhero.id %>/actors'">Show Actors</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
