@@ -38,32 +38,34 @@ class SuperheroService {
     async getSuperheroActors(superheroName) {
         const apiKey = process.env.OMDB_API_KEY;
         const searchUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${encodeURIComponent(superheroName)}&type=movie`;
-
+    
         try {
             const searchResponse = await axios.get(searchUrl);
-            console.log(searchResponse)
             if (searchResponse.data.Response === 'True') {
-                const moviesDetailsPromises = searchResponse.data.Search.map(async movie => {
+    
+                const moviesDetailsPromises = searchResponse.data.Search.map(movie => {
                     const detailsUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`;
-                    const detailsResponse = await axios.get(detailsUrl);
-                    console.log(detailsResponse)
-                    return {
-                        poster: detailsResponse.data.Poster,
-                        title: detailsResponse.data.Title,
-                        year: detailsResponse.data.Year,
-                        actors: detailsResponse.data.Actors.split(', ') // Assuming actors are separated by commas
-                    };
+                    return axios.get(detailsUrl); // Don't await here
                 });
-
-                const moviesDetails = await Promise.all(moviesDetailsPromises);
-                return moviesDetails.filter(movie => movie.actors.length > 0); // Filter out movies without actor details
+    
+                const moviesDetailsResponses = await Promise.all(moviesDetailsPromises);
+    
+           
+                const moviesDetails = moviesDetailsResponses.map(detailsResponse => ({
+                    poster: detailsResponse.data.Poster,
+                    title: detailsResponse.data.Title,
+                    year: detailsResponse.data.Year,
+                    actors: detailsResponse.data.Actors.split(', ')
+                }));
+    
+                return moviesDetails.filter(movie => movie.actors.length > 0);
             } else {
                 return [];
             }
         } catch (error) {
             throw new Error(error.response.data.error);
         }
-    }
+    }    
 }
 
 module.exports = new SuperheroService();
