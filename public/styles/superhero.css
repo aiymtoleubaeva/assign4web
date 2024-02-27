@@ -15,11 +15,11 @@ body {
 
 .card-body h2 {
     font-weight: bold;
-    color: #007bff;
+    color: #9971d4;
 }
 
 .card-body h4 {
-    color: #17a2b8;
+    color: #cf90b5;
 }
 
 .btn-info {
@@ -41,7 +41,7 @@ body {
 }
 
 .powerstats .progress-bar {
-    background-color: #007bff;
+    background-color: #7c234f;
     border-radius: 20px;
 }
 
