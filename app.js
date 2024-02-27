@@ -30,7 +30,7 @@ i18next
     .init({
         fallbackLng: 'en',
         backend: {
-            loadPath: __dirname + '/locales/{{lng}}.json',
+            loadPath: __dirname + '/src/locales/{{lng}}.json',
         },
         detection: {
             lookupSession: 'lang',

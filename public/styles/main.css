@@ -1,23 +1,23 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9; /* более нежный оттенок серого */
+    background-color: #f9f9f9; 
     margin: 0;
     padding: 0;
 }
 
 .navbar {
-    background-color: #fff; /* белый фон */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* мягкая тень */
+    background-color: #fff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .container {
-    width: 90%; /* увеличиваем ширину контейнера */
-    max-width: 1200px; /* устанавливаем максимальную ширину */
+    width: 90%; 
+    max-width: 1200px; 
     margin: auto;
     background-color: #fff;
-    padding: 30px; /* увеличиваем внутренний отступ */
+    padding: 30px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px; /* скругляем углы */
+    border-radius: 10px; 
 }
 
 h2 {
@@ -29,16 +29,16 @@ h2 {
 }
 
 .btn-primary {
-    background-color: #6c757d; /* более нежный синий */
+    background-color: #6c757d;
     border-color: #6c757d;
-    color: #fff; /* белый текст */
+    color: #fff; 
 }
 
 .table {
-    margin-top: 30px; /* увеличиваем отступ сверху */
+    margin-top: 30px; 
 }
 
-/* Дополнительные стили для элементов формы или других элементов */
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -58,10 +58,10 @@ input[type="password"]:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #6c757d; /* изменение цвета при фокусе */
+    border-color: #6c757d; 
 }
 
-/* Цветовая схема для таблицы */
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -74,16 +74,16 @@ select:focus {
 }
 
 .table th {
-    background-color: #f2f2f2; /* светло-серый фон для заголовков */
+    background-color: #f2f2f2; 
     text-align: left;
 }
 
-/* Стили для ссылок */
+
 a {
-    color: #007bff; /* синий цвет ссылок */
+    color: #007bff; 
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline; /* подчеркивание при наведении */
+    text-decoration: underline;
 }
